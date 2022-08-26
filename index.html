@@ -52,7 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
  <script>
-  var time = moment().format( 'dddd, MMMM Do YYYY,hh:mm:ss');
+  var time = moment().format( 'dddd, MMMM Do YYYY');
 $("#currentDay").text(time);
   var currentHour = moment().hours();
   for ( var i = 9; i <= 17; i++) {
@@ -67,9 +67,9 @@ $("#currentDay").text(time);
     hours += "pm"
   }
   document.querySelector(".container").innerHTML +=`<div data-id="${i}" class="row">
-    <div class="col-1 time-block">${hours}</div>
-    <textarea id ="${hours}"class="col-10 ">Add Events Here</textarea>
-    <div class="col-1 "><i class="fa-duotone fa-calendar-check"></i></div> 
+    <div class="col-1 hour time-block">${hours}</div>
+    <textarea id ="${hours}"class="col-10 "></textarea>
+    <button class="col-1 saveBtn "><i class="fas fa-calendar-check"></i></button> 
     <!-- add save buttom to above div -->
     <!-- add icon for save  edit-->
     </div>`
@@ -77,13 +77,45 @@ $("#currentDay").text(time);
      $("#"+ hours).addClass('past')
       
     }
-    if (i === currentHour){
+    if (i === currentHour) {
       $("#"+ hours).addClass('present')
     }
-    if (i> currentHour){
+    if (i> currentHour) {
       $("#"+ hours).addClass('future')
     }
   }
+
+  // addEventListener for button 
+  // fix icon for save button done
+  // send to local storage function
+  var button = document.querySelector('button');
+  var events = document.querySelector('textarea')
+  var savedEvents = JSON.parse(localStorage.getItem('events'));
+  events.push(savedEvents);
+  
+  // function saveEvents(){
+  //   var event = 
+
+  // };
+
+
+  $('button').on('click', 'saveEvent', function (){
+    
+  });
+
+  //  var saveEvent = $(this).parent().attr('btn');
+  //  var Event = ;
+  //  localStorage.setItem.('textarea');
+  // });
+
+
+  // $('.container').on('click', '.name', function() {
+  //     var parentId = $(this).parent().attr('data-id');
+  //     var name = $(this).text();
+  //     localStorage.setItem(parentId, name);
+  //   });
+
+
 
  </script>
   </body>
